@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequestMapping("cheese")
@@ -34,5 +35,21 @@ public class CheeseController {
     public String processAddCheeseForm(@RequestParam String cheeseName, @RequestParam String description){
         cheeses.put(cheeseName, description);
         return "redirect:";
+    }
+
+    @RequestMapping(value="remove", method = RequestMethod.GET)
+    public String displayRemoveCheeseForm(Model model){
+        model.addAttribute("cheeses", cheeses);
+        model.addAttribute("title", "Remove Cheese");
+        return "cheese/remove";
+
+    }
+    @RequestMapping(value="remove", method = RequestMethod.POST)
+    public String processRemoveCheeseForm(@RequestParam ArrayList<String> cheese){
+        for (String acheese : cheese) {
+            cheeses.remove(acheese);
+
+        }
+        return "redirect: ";
     }
 }
