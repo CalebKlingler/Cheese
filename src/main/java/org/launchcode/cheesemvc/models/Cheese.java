@@ -3,13 +3,14 @@ package org.launchcode.cheesemvc.models;
 public class Cheese {
     private String name;
     private String description;
-
-    public Cheese(String name, String description){
+    private Integer id;
+    public Cheese(String name, String description, Integer id){
         this.name = name;
         this.description = description;
+        this.id = id;
     }
-    public Cheese (String name){
-        this(name, "");
+    public Cheese (String name, Integer id){
+        this(name, "", id);
     }
 
     public String getName(){
@@ -23,5 +24,8 @@ public class Cheese {
     }
     private void setDescription(String aDescription){
         description = aDescription;
+    }
+    public int getId(){
+        return id;
     }
 }
