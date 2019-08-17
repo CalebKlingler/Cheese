@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -50,6 +51,7 @@ public class CheeseController {
     }
     @RequestMapping(value="remove", method = RequestMethod.POST)
     public String processRemoveCheeseForm(@RequestParam ArrayList<Integer> cheese){
+        Collections.reverse(cheese);
         for (int aCheese : cheese) {
             cheeses.remove(aCheese);
         }
